@@ -1,0 +1,4 @@
+" enable syntax highlighting for glsl
+au BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl setf glsl 
+
+

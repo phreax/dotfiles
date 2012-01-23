@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/pyth0n/.gconf/desktop/gnome/font_rendering'
+let g:netrw_dirhist_2='/home/pyth0n/projects/gojs/views'
+let g:netrw_dirhist_3='/home/pyth0n/projects/gojs/lib'
+let g:netrw_dirhist_4='/home/pyth0n/dotfiles/gconf/system/networking/wireless/networks/FON_AP'

@@ -1,0 +1,16 @@
+import vim
+
+count = 0
+
+def hello():
+    global count
+    if count==0:
+        print "First time!"
+        count +=1
+    else:
+        print "Count ",count
+        count +=1 
+        
+ 
+
+

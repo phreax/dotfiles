@@ -1,0 +1,10 @@
+
+" load liveclient extension
+pyfile ../python/liveclient.py
+
+command! -nargs=0 :python SendVertShader liveclient.send_shader("shader_vp")
+command! -nargs=0 :python SendFragShader liveclient.send_shader("shader_fp")
+
+" send shader source
+au BufWritePost *.frag :SendFragShader
+au BufWritePost *.frag :SendVertShader
