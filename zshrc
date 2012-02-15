@@ -39,7 +39,6 @@ alias basic="sudo setxkbmap -variant 'basic'"
 alias nodead="sudo setxkbmap -variant 'nodeadkeys'"
 
 alias grep="grep --color"
-RUBYLIB=$RUBYLIB:.
 
 alias ruby="ruby -I ."
 # by default open files in tabs
@@ -49,18 +48,22 @@ alias ruby="ruby -I ."
 # ask before deletion
 alias rm="rm -i"
 
-# colorful ls
+# solarized theme for dir colors
 eval "`dircolors ~/.dircolors`"
 
 alias l="ls"
 alias la="ls -a"
 alias ll="ls -l"
 
-# qt
-# export QTDIR=/usr/lib/qt3
-# java
-# export JREDIR=/opt/jre1.5.0_11
+# start tmux in 256 color mode
+alias tmux="tmux -2" 
 
-export PATH=$PATH:/usr/games:/opt/e17:/opt/e17/bin:$HOME/opt/bin:~/bin
 
-# Customize to your needs...
+# User specific environment and startup programs
+PATH=$PATH:$HOME/bin:/usr/bin
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+export PATH
+unset USERNAME
+
+RUBYLIB=$RUBYLIB:.
