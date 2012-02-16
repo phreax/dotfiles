@@ -9,5 +9,5 @@
 # it can be accessed later by other scripts
 touch $HOME/.Xenv
 chmod 600 $HOME/.Xenv
-env | grep XAUTHORITY >> .Xenv
+env | grep XAUTHORITY > .Xenv
 echo export XAUTHORITY >> .Xenv
