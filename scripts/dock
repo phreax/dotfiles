@@ -1,0 +1,30 @@
+#!/bin/sh
+
+set -e
+
+USER=pyth0n
+export HOME=/home/$USER
+export DISPLAY=:0
+. $HOME/.Xenv
+
+# load session data
+
+DISPER=/usr/bin/disper
+STATE=$(cat /sys/bus/platform/devices/dock.0/docked)
+
+echo processing udev-docking >> /tmp/udev.log
+
+# add docking station
+if [ $STATE = '1' ]; then
+    echo docked >> /tmp/udev.log
+    $DISPER -e -r auto    
+fi
+
+# add remove docking station
+if [ $STATE = '0' ]; then
+    echo undocked >> /tmp/udev.log
+    $DISPER -s -r auto    
+fi
+
+
+

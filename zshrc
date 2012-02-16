@@ -26,8 +26,14 @@ ZSH_THEME="jreese"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git)
 
-source $ZSH/oh-my-zsh.sh
+# dont rename window in screen/tmux session
+    
+if [[ "$TERM" == screen* ]]; then
+    # set title once
+    DISABLE_AUTO_TITLE=true
+fi
 
+source $ZSH/oh-my-zsh.sh
 export LC_ALL=de_DE.UTF-8
 export LANG=de_DE.UTF-8
 LANGUAGE=de_DE

@@ -1,0 +1,3 @@
+# rules for docking / undocking
+ENV{EVENT}=="undock", KERNEL=="dock.0", RUN+="dock"
+ENV{EVENT}=="dock", KERNEL=="dock.0", RUN+="dock"
