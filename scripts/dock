@@ -16,13 +16,13 @@ echo processing udev-docking >> /tmp/udev.log
 
 # add docking station
 if [ $STATE = '1' ]; then
-    echo docked >> /tmp/udev.log
-    $DISPER -e -r auto    
+#    echo docked >> /tmp/udev.log
+    #$DISPER -e -r auto    
 fi
 
 # add remove docking station
 if [ $STATE = '0' ]; then
-    echo undocked >> /tmp/udev.log
+#    echo undocked >> /tmp/udev.log
     $DISPER -s -r auto    
 fi
 

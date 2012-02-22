@@ -3,45 +3,45 @@
 	<entry name="background_image" mtime="1327336197" type="string">
 		<stringvalue></stringvalue>
 	</entry>
-	<entry name="use_system_font" mtime="1327336197" type="bool" value="false"/>
+	<entry name="use_system_font" mtime="1329925964" type="bool" value="false"/>
 	<entry name="scroll_on_keystroke" mtime="1327336197" type="bool" value="true"/>
-	<entry name="bold_color_same_as_fg" mtime="1327336197" type="bool" value="false"/>
-	<entry name="alternate_screen_scroll" mtime="1327336197" type="bool" value="true"/>
-	<entry name="visible_name" mtime="1327336197" type="string">
-		<stringvalue>solarized</stringvalue>
+	<entry name="bold_color_same_as_fg" mtime="1329925964" type="bool" value="false"/>
+	<entry name="alternate_screen_scroll" mtime="1329925964" type="bool" value="true"/>
+	<entry name="visible_name" mtime="1329925964" type="string">
+		<stringvalue>solarized-dark</stringvalue>
 	</entry>
 	<entry name="update_records" mtime="1327336197" type="bool" value="true"/>
 	<entry name="background_type" mtime="1327336197" type="string">
 		<stringvalue>solid</stringvalue>
 	</entry>
-	<entry name="default_show_menubar" mtime="1327336197" type="bool" value="false"/>
+	<entry name="default_show_menubar" mtime="1329925964" type="bool" value="false"/>
 	<entry name="use_custom_command" mtime="1327336197" type="bool" value="false"/>
 	<entry name="exit_action" mtime="1327336197" type="string">
 		<stringvalue>close</stringvalue>
 	</entry>
-	<entry name="palette" mtime="1327336197" type="string">
+	<entry name="palette" mtime="1329925964" type="string">
 		<stringvalue>#262626262626:#DCDC32322F2F:#858599990000:#B5B589890000:#26268B8BD2D2:#D3D336368282:#2A2AA1A19898:#E4E4E4E4E4E4:#1C1C1C1C1C1C:#CBCB4B4B1616:#585858585858:#626262626262:#808080808080:#6C6C7171C4C4:#8A8A8A8A8A8A:#FFFFFFFFD7D7</stringvalue>
 	</entry>
 	<entry name="scroll_background" mtime="1327336197" type="bool" value="true"/>
 	<entry name="custom_command" mtime="1327336197" type="string">
 		<stringvalue></stringvalue>
 	</entry>
-	<entry name="use_theme_colors" mtime="1327336197" type="bool" value="false"/>
+	<entry name="use_theme_colors" mtime="1329925964" type="bool" value="false"/>
 	<entry name="use_custom_default_size" mtime="1327336197" type="bool" value="false"/>
 	<entry name="title_mode" mtime="1327336197" type="string">
 		<stringvalue>replace</stringvalue>
 	</entry>
 	<entry name="use_skey" mtime="1327336197" type="bool" value="true"/>
-	<entry name="scrollbar_position" mtime="1327336197" type="string">
+	<entry name="scrollbar_position" mtime="1329925964" type="string">
 		<stringvalue>hidden</stringvalue>
 	</entry>
-	<entry name="font" mtime="1327336197" type="string">
+	<entry name="font" mtime="1329925964" type="string">
 		<stringvalue>Monospace 10</stringvalue>
 	</entry>
-	<entry name="background_color" mtime="1327336197" type="string">
+	<entry name="background_color" mtime="1329925964" type="string">
 		<stringvalue>#1C1C1C1C1C1C</stringvalue>
 	</entry>
-	<entry name="bold_color" mtime="1327336197" type="string">
+	<entry name="bold_color" mtime="1329925964" type="string">
 		<stringvalue>#8A8A8A8A8A8A</stringvalue>
 	</entry>
 	<entry name="cursor_blink_mode" mtime="1327336197" type="string">
@@ -59,7 +59,7 @@
 	<entry name="title" mtime="1327336197" type="string">
 		<stringvalue>Terminal</stringvalue>
 	</entry>
-	<entry name="scrollback_lines" mtime="1327336197" type="int" value="256"/>
+	<entry name="scrollback_lines" mtime="1329925964" type="int" value="256"/>
 	<entry name="word_chars" mtime="1327336197" type="string">
 		<stringvalue>-A-Za-z0-9,./?%&amp;#:_=+@~</stringvalue>
 	</entry>
@@ -70,9 +70,9 @@
 		<stringvalue>ascii-del</stringvalue>
 	</entry>
 	<entry name="use_theme_background" mtime="1327336197" type="bool" value="true"/>
-	<entry name="silent_bell" mtime="1327336197" type="bool" value="true"/>
+	<entry name="silent_bell" mtime="1329925964" type="bool" value="true"/>
 	<entry name="allow_bold" mtime="1327336197" type="bool" value="true"/>
-	<entry name="foreground_color" mtime="1327336197" type="string">
+	<entry name="foreground_color" mtime="1329925964" type="string">
 		<stringvalue>#8D928B338B33</stringvalue>
 	</entry>
 </gconf>

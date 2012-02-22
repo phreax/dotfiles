@@ -1,6 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/home/pyth0n/.gconf/desktop/gnome/font_rendering'
 let g:netrw_dirhist_2='/home/pyth0n/projects/gojs/views'
 let g:netrw_dirhist_3='/home/pyth0n/projects/gojs/lib'
 let g:netrw_dirhist_4='/home/pyth0n/dotfiles/gconf/system/networking/wireless/networks/FON_AP'
+let g:netrw_dirhist_5='/home/pyth0n/projects/md2slide/deck.js'
+let g:netrw_dirhist_6='/home/pyth0n/.oh-my-zsh'
+let g:netrw_dirhist_7='/home/pyth0n/.oh-my-zsh/custom'
+let g:netrw_dirhist_8='/home/pyth0n/Studium/SS11/networkanalysis/assignments/lib'
