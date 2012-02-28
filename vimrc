@@ -38,6 +38,7 @@ map <S-MouseUp> <C-D>
 let mapleader = ","
 let g:mapleader = ","
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -53,6 +54,18 @@ nmap <C-l> <C-W>
 " navigation between buffers
 map h :bp!<CR>
 map l :bn!<CR>
+
+map <Left> :bp!<CR>
+map <Right> :bn!<CR>
+
+map <Left> :bp!<CR>
+map <Right> :bn!<CR>
+map <M-right> :bn!<CR>
+map <M-left> :bp!<CR>
+map <M-k> :bp!<CR>
+map <M-l> :bn!<CR>
+map <M-h> :bp!<CR>
+
 
 """"""""""""""""""""""""""""""
 " => bufExplorer plugin
@@ -171,21 +184,20 @@ let &tags = ".tags"
 set tagstack  " Record tag moves so that ctrl+T pops back
 
 " Set color
-set t_Co=256
+""set t_Co=256
 " colorscheme dante 
 
-let g:solarized_termcolors=256
+""let g:solarized_termcolors=16
+let g:solarized_termtrans=0
 set background=dark
-colorscheme solarized
                              
+colorscheme solarized
 "hi CursorLine   cterm=NONE term=NONE  ctermbg=24
-hi CursorLine   cterm=NONE term=NONE  ctermbg=235
-hi StatusLineNC    ctermfg=232 ctermbg=238
-hi StatusLine    ctermfg=233 ctermbg=238
-"hi StatusLineNC    ctermfg=84 ctermbg=236
-"hi StatusLine    ctermfg=83 ctermbg=236
+"hi CursorLine   cterm=NONE term=NONE  ctermbg=0
+hi StatusLine     cterm=bold ctermbg=8
+hi StatusLineNC    cterm=bold ctermfg=1 ctermbg=0
 "hi Comment       ctermfg=59
-hi String        ctermfg=142
+""hi String        ctermfg=142
 "hi Search        ctermbg=118
 "hi Pmenu         ctermbg=118 ctermfg=23
 "hi PmenuSel         ctermfg=118 ctermbg=23

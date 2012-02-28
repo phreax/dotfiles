@@ -34,11 +34,7 @@ if [[ "$TERM" == screen* ]]; then
 fi
 
 source $ZSH/oh-my-zsh.sh
-export LC_ALL=de_DE.UTF-8
-export LANG=de_DE.UTF-8
-LANGUAGE=de_DE
 export PYTHONSTARTUP=~/.pythonrc
-export LD_PRELOAD=/usr/lib/libv4l/v4l2convert.so
 
 # switch keyboard mapping
 alias basic="sudo setxkbmap -variant 'basic'"

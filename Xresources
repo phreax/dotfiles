@@ -77,14 +77,16 @@
 *color15:               S_base3
 
 Xft.dpi:        96
-Xft.antialias:  true
+Xft.antialias:  false
 Xft.rgba:       1
 Xft.hinting:    true
-Xft.hintstyle:  hintfull
-Xft.lcdfilter:  lcdlegacy
+Xft.hintstyle:  hintmedium
+Xft.lcdfilter:  lcddefault
 
 
 xterm*renderFont: true
-xterm*faceName: Monospace
+xterm*faceName: Inconsolata
 xterm*faceSize: 10
+xterm*utf8: 1 
+xterm*termName: xterm-16color
 
