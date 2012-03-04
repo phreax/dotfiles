@@ -31,7 +31,10 @@ plugins=(git)
 if [[ "$TERM" == screen* ]]; then
     # set title once
     DISABLE_AUTO_TITLE=true
+else
+    export TERM=xterm-16color
 fi
+
 
 source $ZSH/oh-my-zsh.sh
 export PYTHONSTARTUP=~/.pythonrc

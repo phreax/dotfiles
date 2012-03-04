@@ -22,11 +22,10 @@ set nocompatible
 
 set autoindent		" always set autoindenting on
 " Make shift-insert work like in Xterm
-"set mouse=a
-"set mousemodel="popup"
-
-map <S-Insert> <MiddleMouse>
-map! <S-Insert> <MiddleMouse>                                                              
+set mouse=r
+set mousemodel="xterm"
+""map <S-Insert> <MiddleMouse>
+""map! <S-Insert> <MiddleMouse>                                                              
 
 map <MouseDown> <C-Y>
 map <S-MouseDown> <C-U>
@@ -66,17 +65,27 @@ map <M-k> :bp!<CR>
 map <M-l> :bn!<CR>
 map <M-h> :bp!<CR>
 
-
 """"""""""""""""""""""""""""""
 " => bufExplorer plugin
 """"""""""""""""""""""""""""""
 let g:bufExplorerDefaultHelp=0
 let g:bufExplorerShowRelativePath=1
 map <leader>o :BufExplorer<cr>
-
 set mouse=a
-set ttymouse=xterm
 
+" fix moues copy paste to work in xterm
+set nopaste
+nmap <F7> :set paste! paste?<CR>
+imap <F7> <C-o>:set paste!<CR>
+"paste toggle
+vmap <F7> <Esc>:set paste!<CR>gv
+"xterm mouse with middleclick paste
+nnoremap <MiddleMouse> i<MiddleMouse>
+vnoremap <MiddleMouse> s<MiddleMouse>
+set pastetoggle=<F7> mouse=rnv
+"choose either one
+set ttymouse=xterm
+"set ttymouse=xterm2
 """"""""""""""""""""""""""""""
 " => Minibuffer plugin
 """"""""""""""""""""""""""""""
@@ -323,6 +332,9 @@ au!
 
 " For all text files set 'textwidth' to 78 characters.
 autocmd FileType text setlocal textwidth=78
+autocmd FileType tex setlocal textwidth=100
+autocmd FileType markdown setlocal textwidth=78
+autocmd FileType pandoc setlocal textwidth=78
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
