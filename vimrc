@@ -15,22 +15,12 @@ endif
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
-
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-set autoindent		" always set autoindenting on
-" Make shift-insert work like in Xterm
-set mouse=r
-set mousemodel="xterm"
-""map <S-Insert> <MiddleMouse>
-""map! <S-Insert> <MiddleMouse>                                                              
-
-map <MouseDown> <C-Y>
-map <S-MouseDown> <C-U>
-map <MouseUp> <C-E>
-map <S-MouseUp> <C-D>
+" save backup files *~ in this directory
+set backupdir=~/.vimbackups
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
@@ -48,7 +38,7 @@ map <C-space> ?
 nmap <C-j> <C-W>j
 nmap <C-k> <C-W>k
 nmap <C-h> <C-W>h
-nmap <C-l> <C-W>
+nmap <C-l> <C-W>l
 
 " navigation between buffers
 map h :bp!<CR>
@@ -71,21 +61,30 @@ map <M-h> :bp!<CR>
 let g:bufExplorerDefaultHelp=0
 let g:bufExplorerShowRelativePath=1
 map <leader>o :BufExplorer<cr>
-set mouse=a
 
-" fix moues copy paste to work in xterm
-set nopaste
-nmap <F7> :set paste! paste?<CR>
-imap <F7> <C-o>:set paste!<CR>
-"paste toggle
-vmap <F7> <Esc>:set paste!<CR>gv
 "xterm mouse with middleclick paste
 nnoremap <MiddleMouse> i<MiddleMouse>
 vnoremap <MiddleMouse> s<MiddleMouse>
+
 set pastetoggle=<F7> mouse=rnv
+
+" Make shift-insert work like in Xterm
+map <S-Insert> <MiddleMouse>
+map! <S-Insert> <MiddleMouse>                                                              
+map <MouseDown> <C-Y>
+map <S-MouseDown> <C-U>
+map <MouseUp> <C-E>
+map <S-MouseUp> <C-D>
+
+
 "choose either one
 set ttymouse=xterm
 "set ttymouse=xterm2
+
+" fix moues copy paste to work in xterm
+set mouse=a
+set mousemodel="xterm"
+
 """"""""""""""""""""""""""""""
 " => Minibuffer plugin
 """"""""""""""""""""""""""""""
@@ -129,10 +128,6 @@ nmap <leader>q :q<cr>
 map <leader>e :e! ~/.vimrc<cr>
 
 " remap left, right
-
-" toggle paste mode
-set pastetoggle=<F10>
-
 
 
 " toggle search highlighting 
@@ -201,18 +196,8 @@ let g:solarized_termtrans=0
 set background=dark
                              
 colorscheme solarized
-"hi CursorLine   cterm=NONE term=NONE  ctermbg=24
-"hi CursorLine   cterm=NONE term=NONE  ctermbg=0
 hi StatusLine     cterm=bold ctermbg=8
 hi StatusLineNC    cterm=bold ctermfg=1 ctermbg=0
-"hi Comment       ctermfg=59
-""hi String        ctermfg=142
-"hi Search        ctermbg=118
-"hi Pmenu         ctermbg=118 ctermfg=23
-"hi PmenuSel         ctermfg=118 ctermbg=23
-"hi PmenuSbar    ctermbg=118 
-""hi PmenuThumb    ctermfg=23
-"hi Visual       ctermfg=238  term=None
 
 """"""""""""""""""""""""""""""
 " => Statusline
@@ -264,8 +249,6 @@ endtry
 
 function! ToggleNumbers()
 if &number
-    F
-    F
     set nonumber
 else
     set number
@@ -274,57 +257,11 @@ endfunction
 
 nmap <F12> :call ToggleNumbers()<CR>
 
-""""""""""""""""""""""""""""""
-" => JavaScript section
-"""""""""""""""""""""""""""""""
-" au FileType javascript call JavaScriptFold()
-au FileType javascript setl fen
-au FileType javascript setl nocindent
-au FileType javascript set shiftwidth=2
-au FileType javascript set tabstop=2 
-
-au FileType javascript imap <c-t> AJS.log();<esc>hi
-au FileType javascript imap <c-a> alert();<esc>hi
-
-au FileType javascript inoremap <buffer> $r return
-au FileType javascript inoremap <buffer> $f //--- PH ----------------------------------------------<esc>FP2xi
-
-function! JavaScriptFold()
-setl foldmethod=syntax
-setl foldlevelstart=1
-syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
-
-function! FoldText()
-return substitute(getline(v:foldstart), '{.*', '{...}', '')
-endfunction
-setl foldtext=FoldText()
-endfunction
-
-" CoffeScript
-let coffee_compile_on_save = 1
-au FileType coffee vmap <Leader>c :CoffeeCompile<CR>
-au FileType coffee set shiftwidth=2
-au FileType coffee set tabstop=2 
-
-
-" autocompletion config
-
-setlocal omnifunc=javacomplete#Complete 
-
-setlocal completefunc=javacomplete#CompleteParamsInfo
-inoremap <buffer> <C-X><C-U> <C-X><C-U><C-P>
-" inoremap <buffer> <C-S-Space> <C-X><C-U><C-P>
-
-" set cursorline highlighting (for gui only)
-set cursorline 
-
-autocmd Filetype java setlocal omnifunc=javacomplete#Complete
 " Enable file type detection.
 " Use the default filetype settings, so that mail gets 'tw' set to 72,
 " 'cindent' is on in C files, etc.
 " Also load indent files, to automatically do language-dependent indenting.
 filetype plugin indent on
-
 
 " Put these in an autocmd group, so that we can delete them easily.
 augroup vimrcEx
