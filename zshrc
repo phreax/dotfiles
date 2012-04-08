@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="jreese"
+ZSH_THEME="blinks"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -31,6 +31,7 @@ plugins=(git)
 if [[ "$TERM" == screen* ]]; then
     # set title once
     DISABLE_AUTO_TITLE=true
+    unset DBUS_SESSION_BUS_ADDRESS
 else
     export TERM=xterm-16color
 fi
@@ -72,3 +73,6 @@ export PATH
 unset USERNAME
 
 RUBYLIB=$RUBYLIB:.
+
+# load local rvm config
+__rvm_project_rvmrc
