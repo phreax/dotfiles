@@ -27,7 +27,6 @@ set backupdir=~/.vimbackups
 let mapleader = ","
 let g:mapleader = ","
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -64,14 +63,14 @@ map <leader>o :BufExplorer<cr>
 
 "xterm mouse with middleclick paste
 nnoremap <MiddleMouse> i<MiddleMouse>
-vnoremap <MiddleMouse> s<MiddleMouse>
+noremap <MiddleMouse> s<MiddleMouse>
 
-set pastetoggle=<F7> mouse=rnv
+set pastetoggle=<F7>
 
 " Make shift-insert work like in Xterm
 map <S-Insert> <MiddleMouse>
 map! <S-Insert> <MiddleMouse>                                                              
-map <MouseDown> <C-Y>
+
 map <S-MouseDown> <C-U>
 map <MouseUp> <C-E>
 map <S-MouseUp> <C-D>
@@ -79,11 +78,17 @@ map <S-MouseUp> <C-D>
 
 "choose either one
 set ttymouse=xterm
-"set ttymouse=xterm2
 
 " fix moues copy paste to work in xterm
-set mouse=a
+set mouse=r
 set mousemodel="xterm"
+
+" Unbind the cursor keys in insert, normal and visual modes.
+for prefix in ['i', 'n', 'v']
+  for key in ['<Up>', '<Down>', '<Left>', '<Right>', '<PageUp>', '<PageDown>', '<End>']
+    exe prefix . "noremap " . key . " <Nop>"
+  endfor
+endfor
 
 """"""""""""""""""""""""""""""
 " => Minibuffer plugin
@@ -186,10 +191,6 @@ set autoindent
 " set tagfile
 let &tags = ".tags"
 set tagstack  " Record tag moves so that ctrl+T pops back
-
-" Set color
-""set t_Co=256
-" colorscheme dante 
 
 ""let g:solarized_termcolors=16
 let g:solarized_termtrans=0
