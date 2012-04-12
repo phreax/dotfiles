@@ -86,6 +86,6 @@ Xft.lcdfilter:  lcddefault
 
 !!xterm*renderFont: true
 xterm*faceName: Inconsolata
-xterm*faceSize: 10
+xterm*faceSize: 12
 xterm*utf8: 1 
 
