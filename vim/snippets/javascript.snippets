@@ -1,7 +1,10 @@
-# Prototype
 snippet req
 	require('${1}')${2}
-	
+# Backbone/Ember
+snippet g
+	this.get('${1}')${2};
+snippet s
+	this.set('${1}', ${2});
 snippet proto
 	${1:class_name}.prototype.${2:method_name} =
 	function(${3:first_argument}) {
@@ -14,7 +17,12 @@ snippet fun
 	}
 # Anonymous Function
 snippet f
-	function(${1}) {${2}};
+	function(${1}) {
+		${2}
+	}${3}
+# logging
+snippet l
+	console.log(${1});
 # if
 snippet if
 	if (${1:true}) {${2}};
@@ -63,7 +71,7 @@ snippet do
 	} while (${1:/* condition */});
 # Object Method
 snippet :f
-	${1:method_name}: function(${2:attribute}) {
+	${1:method_name}: function(${2}) {
 		${4}
 	}${3:,}
 # setTimeout function

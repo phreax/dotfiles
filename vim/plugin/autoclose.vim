@@ -13,7 +13,7 @@
 "    to do so if you have something else mapped to \a since this plugin won't
 "    clobber your mapping. Here's how to map \x:
 "
-"       nmap <Leader>x <Plug>ToggleAutoCloseMappings
+       nmap <Leader>b <Plug>ToggleAutoCloseMappings
 "
 "    You'll also probably want to know you can type <C-V> (<C-Q> if mswin is
 "    set) and the next character you type doesn't have mappings applied. This
@@ -62,6 +62,9 @@ if !exists('g:autoclose_on')
     let g:autoclose_on = 1
 endif
 
+
+
+
 " (Toggle) Mappings -----------------------------{{{1
 "
 nmap <Plug>ToggleAutoCloseMappings :call <SID>ToggleAutoCloseMappings()<CR>
@@ -90,8 +93,8 @@ fun <SID>ToggleAutoCloseMappings() " --- {{{2
         inoremap ) <C-R>=<SID>CloseStackPop(')')<CR>
         inoremap <silent> [ [<C-R>=<SID>CloseStackPush(']')<CR>
         inoremap <silent> ] <C-R>=<SID>CloseStackPop(']')<CR>
-        "inoremap <silent> { {<C-R>=<SID>CloseStackPush('}')<CR>
         inoremap <silent> { <C-R>=<SID>OpenSpecial('{','}')<CR>
+
         inoremap <silent> } <C-R>=<SID>CloseStackPop('}')<CR>
         inoremap <silent> <BS> <C-R>=<SID>OpenCloseBackspace()<CR>
         inoremap <silent> <C-h> <C-R>=<SID>OpenCloseBackspace()<CR>
@@ -114,15 +117,22 @@ let s:closeStack = []
 
 " AutoClose Utilities -----------------------------------------{{{1
 function <SID>OpenSpecial(ochar,cchar) " ---{{{2
-    let line = getline('.')
-    let col = col('.') - 2
-    "echom string(col).':'.line[:(col)].'|'.line[(col+1):]
-    if a:ochar == line[(col)] && a:cchar == line[(col+1)] "&& strlen(line) - (col) == 2
-        "echom string(s:closeStack)
-        while len(s:closeStack) > 0
-            call remove(s:closeStack, 0)
-        endwhile
-        return "\<esc>a\<CR>;\<CR>".a:cchar."\<esc>\"_xk$\"_xa"
+
+    if !exists('b:autoclose_break')
+        let b:autoclose_break = 1
+    endif
+        
+    if b:autoclose_break
+        let line = getline('.')
+        let col = col('.') - 2
+        "echom string(col).':'.line[:(col)].'|'.line[(col+1):]
+        if a:ochar == line[(col)] && a:cchar == line[(col+1)] "&& strlen(line) - (col) == 2
+            "echom string(s:closeStack)
+            while len(s:closeStack) > 0
+                call remove(s:closeStack, 0)
+            endwhile
+            return "\<esc>a\<CR>;\<CR>".a:cchar."\<esc>\"_xk$\"_xa"
+        endif
     endif
     return a:ochar.<SID>CloseStackPush(a:cchar)
 endfunction

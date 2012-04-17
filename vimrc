@@ -19,6 +19,9 @@ call pathogen#helptags()
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
+" don't enforce saving before switching buffers
+set hidden
+
 " save backup files *~ in this directory
 set backupdir=~/.vimbackups
 
@@ -75,6 +78,7 @@ map <S-MouseDown> <C-U>
 map <MouseUp> <C-E>
 map <S-MouseUp> <C-D>
 
+let g:sparkupExecuteMapping = '<c-e>'
 
 "choose either one
 set ttymouse=xterm
@@ -85,7 +89,7 @@ set mousemodel="xterm"
 
 " Unbind the cursor keys in insert, normal and visual modes.
 for prefix in ['i', 'n', 'v']
-  for key in ['<Up>', '<Down>', '<Left>', '<Right>', '<PageUp>', '<PageDown>', '<End>']
+  for key in ['<Up>', '<Down>', '<Left>', '<Right>', '<End>']
     exe prefix . "noremap " . key . " <Nop>"
   endfor
 endfor
@@ -118,7 +122,13 @@ map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
 
+nnoremap ; :
+vnoremap ; :
 
+" clear highlight searc
+nmap <silent> <leader>/ :nohlsearch<CR>
+
+nmap ,n :call ReloadSnippets(snippets_dir, &filetype)<CR>
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -130,7 +140,8 @@ nmap <leader>x :bd<cr>
 nmap <leader>q :q<cr>
 
 " Fast editing of the .vimrc
-map <leader>e :e! ~/.vimrc<cr>
+nmap <leader>e :e! ~/.vimrc<cr>
+nmap P +A
 
 " remap left, right
 
@@ -168,7 +179,9 @@ set wildmenu        " better cmd tab menu
 set number
 
 " When pressing <leader>cd switch to the directory of the open buffer
-map <leader>d :cd %:p:h<cr>
+map <leader>cd :cd %:p:h<cr>
+map <leader>d :LustyJuggler<cr>
+
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -263,6 +276,10 @@ nmap <F12> :call ToggleNumbers()<CR>
 " 'cindent' is on in C files, etc.
 " Also load indent files, to automatically do language-dependent indenting.
 filetype plugin indent on
+filetype plugin on
+
+" JSHint options 
+autocmd FileType javascript nmap <leader>j :JSHint<cr>
 
 " Put these in an autocmd group, so that we can delete them easily.
 augroup vimrcEx
