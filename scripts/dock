@@ -12,17 +12,16 @@ export DISPLAY=:0
 DISPER=/usr/bin/disper
 STATE=$(cat /sys/bus/platform/devices/dock.0/docked)
 
-echo processing udev-docking >> /tmp/udev.log
-
 # add docking station
 if [ $STATE = '1' ]; then
-#    echo docked >> /tmp/udev.log
-    #$DISPER -e -r auto    
+    echo "add docking"
+    $DISPER -e -r auto    
+    echo "$DISPER -e -r auto"
 fi
 
-# add remove docking station
+# remove docking station
 if [ $STATE = '0' ]; then
-#    echo undocked >> /tmp/udev.log
+    echo "remove remove"
     $DISPER -s -r auto    
 fi
 
