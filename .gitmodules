@@ -15,7 +15,7 @@
 	url = http://github.com/godlygeek/tabular.git
 [submodule "vim/bundle/command-t"]
 	path = vim/bundle/command-t
-	url = git://git.wincent.com/command-t.git
+	url = git://github.com/wincent/Command-T.git
 [submodule "vim/bundle/endwise"]
 	path = vim/bundle/endwise
 	url = git://github.com/tpope/vim-endwise.git
