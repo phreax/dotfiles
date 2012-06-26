@@ -14,6 +14,7 @@ endif
 " init pathogen
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
+call pathogen#infect()
 
 
 " Use Vim settings, rather then Vi settings (much better!).
@@ -85,7 +86,18 @@ vnoremap <MiddleMouse> s<MiddleMouse>
 set pastetoggle=<F7> mouse=rnv
 "choose either one
 set ttymouse=xterm
-"set ttymouse=xterm2
+
+" fix moues copy paste to work in xterm
+set mouse=r
+set mousemodel="xterm"
+
+" Unbind the cursor keys in insert, normal and visual modes.
+""for prefix in ['i', 'n', 'v']
+"j"  for key in ['<Up>', '<Down>', '<Left>', '<Right>', '<End>']
+""    exe prefix . "noremap " . key . " <Nop>"
+""  endfor
+""endfor
+
 """"""""""""""""""""""""""""""
 " => Minibuffer plugin
 """"""""""""""""""""""""""""""
@@ -113,8 +125,6 @@ map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
-
-
 
 " Fast saving
 nmap <leader>w :w!<cr>
