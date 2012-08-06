@@ -25,3 +25,6 @@
 [submodule "vim/bundle/tcomment"]
 	path = vim/bundle/tcomment
 	url = git://github.com/vim-scripts/tComment.git
+[submodule "vim/bundle/sparkup"]
+	path = vim/bundle/sparkup
+	url = git://github.com/rstacruz/sparkup.git
