@@ -846,6 +846,15 @@ exe "hi! rubyDefine"     . s:fg_base1  .s:bg_back   .s:fmt_bold
 "hi! link rubyClassVariable     Identifier
 "hi! link rubyConstant          Type
 "}}}
+
+" coffee-script highlighting "{{{
+
+exe "hi! coffeeClass"               . s:fg_base1  .s:bg_back   .s:fmt_bold
+exe "hi! coffeeBlock"      . s:fg_orange .s:bg_none   .s:fmt_none
+exe "hi! coffeeRegex"               . s:fg_yellow .s:bg_none   .s:fmt_none
+"exe "hi! coffeeFunctionParameter"   . s:fg_blue .s:bg_none     .s:fmt_none
+
+" }}}"
 " haskell syntax highlighting"{{{
 " ---------------------------------------------------------------------
 " For use with syntax/haskell.vim : Haskell Syntax File
@@ -878,7 +887,7 @@ exe "hi! hsTypedef"          . s:fg_cyan   .s:bg_none   .s:fmt_none
 exe "hi! hsModuleName"       . s:fg_green  .s:bg_none   .s:fmt_undr
 exe "hi! hsModuleStartLabel" . s:fg_magenta.s:bg_none   .s:fmt_none
 hi! link hsImportParams      Delimiter
-hi! link hsDelimTypeExport   Delimiter
+hi! link hsDelimTypeExport   Delimite
 hi! link hsModuleStartLabel  hsStructure
 hi! link hsModuleWhereLabel  hsModuleStartLabel
 
