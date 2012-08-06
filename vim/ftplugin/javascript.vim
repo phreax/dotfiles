@@ -9,6 +9,8 @@ function! JavaScriptFold()
     setl foldtext=FoldText()
 endfunction
 
+" JSHint options 
+nmap <leader>j :JSHint<cr>
 
 " au FileType javascript call JavaScriptFold()
 setl fen

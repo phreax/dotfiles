@@ -83,7 +83,8 @@ Xft.hinting:    true
 Xft.hintstyle:  hintslight
 Xft.lcdfilter:  lcddefault
 
-
+xterm*boldMode: true
+xterm*colorBDMode:false
 !!xterm*renderFont: true
 xterm*faceName: Inconsolata
 xterm*faceSize: 10
