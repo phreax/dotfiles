@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/pyth0n/dotfiles/vim/bundle/sparkup/ftplugin/html'
-let g:netrw_dirhist_2='/home/pyth0n/dotfiles/vim/bundle/handlebars/ftdetect'
-let g:netrw_dirhist_3='/home/pyth0n/dotfiles/vim/ftdetect'
-let g:netrw_dirhist_4='/home/pyth0n/dotfiles/vim/bundle/sparkup/plugin'
-let g:netrw_dirhist_5='/home/pyth0n/dotfiles/vim/bundle/handlebars/ftplugin'

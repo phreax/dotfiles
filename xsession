@@ -11,5 +11,7 @@ touch $HOME/.Xenv
 chmod 600 $HOME/.Xenv
 env | grep XAUTHORITY > .Xenv
 echo export XAUTHORITY >> .Xenv
-export TERM=xterm-16color
-xrdb -load ~/.Xresources
+export TERM=xterm-256color
+echo xrdb -load $HOME/.Xresources
+xrdb -load $HOME/.Xresources
+     

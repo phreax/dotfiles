@@ -24,7 +24,7 @@ ZSH_THEME="blinks"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(git rvm rails)
 
 # dont rename window in screen/tmux session
     
@@ -33,9 +33,37 @@ if [[ "$TERM" == screen* ]]; then
     DISABLE_AUTO_TITLE=true
     unset DBUS_SESSION_BUS_ADDRESS
 else
-    export TERM=xterm-16color
+    export TERM=xterm-256color
 fi
 
+# set current dir for tmux
+#$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#I") $PWD)
+
+alias vi=vim
+
+vim () {
+    (unset GEM_PATH GEM_HOME; command vim "$@")
+}
+
+# Module: Change directory with bookmarks
+# path: bin/zsh-modules-available/cdbookmarks
+function cedit() {
+  vim ~/.cdbookmarks
+}
+
+function c() {
+  NewDir=`egrep "^$1\s." ~/.cdbookmarks \
+     | awk '{print $2}'`
+  echo cd $NewDir
+  cd $NewDir
+  unset $NewDir
+}
+
+function _c() {
+  reply=(`cat ~/.cdbookmarks | awk '{print $1}'`);
+}
+
+compctl -K _c c
 
 source $ZSH/oh-my-zsh.sh
 export PYTHONSTARTUP=~/.pythonrc
@@ -76,3 +104,4 @@ RUBYLIB=$RUBYLIB:.
 
 # load local rvm config
 __rvm_project_rvmrc
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
