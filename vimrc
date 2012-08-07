@@ -88,11 +88,11 @@ set mouse=r
 set mousemodel="xterm"
 
 " Unbind the cursor keys in insert, normal and visual modes.
-" for prefix in ['i', 'n', 'v']
-"   for key in ['<Up>', '<Down>', '<Left>', '<Right>', '<End>']
-"     exe prefix . "noremap " . key . " <Nop>"
+"   for prefix in ['i', 'n', 'v']
+"     for key in ['<Up>', '<Down>', '<Left>', '<Right>', '<PageUp>', '<PageDown>', '<End>']
+"       exe prefix . "noremap " . key . " <Nop>"
+"     endfor
 "   endfor
-" endfor
 
 """"""""""""""""""""""""""""""
 " => Minibuffer plugin
