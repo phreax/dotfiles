@@ -67,6 +67,7 @@ compctl -K _c c
 
 source $ZSH/oh-my-zsh.sh
 export PYTHONSTARTUP=~/.pythonrc
+export TZ=Europe/Berlin
 
 # switch keyboard mapping
 alias basic="sudo setxkbmap -variant 'basic'"
