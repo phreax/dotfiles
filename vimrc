@@ -88,11 +88,11 @@ set mouse=r
 set mousemodel="xterm"
 
 " Unbind the cursor keys in insert, normal and visual modes.
-for prefix in ['i', 'n', 'v']
-  for key in ['<Up>', '<Down>', '<Left>', '<Right>', '<End>']
-    exe prefix . "noremap " . key . " <Nop>"
-  endfor
-endfor
+" for prefix in ['i', 'n', 'v']
+"   for key in ['<Up>', '<Down>', '<Left>', '<Right>', '<End>']
+"     exe prefix . "noremap " . key . " <Nop>"
+"   endfor
+" endfor
 
 """"""""""""""""""""""""""""""
 " => Minibuffer plugin
@@ -335,7 +335,13 @@ autocmd FileType tex setlocal textwidth=100
 autocmd FileType markdown setlocal textwidth=78
 autocmd FileType pandoc setlocal textwidth=78
 
+" Tagclose for all html-like files
+let g:closetag_html_style=1 
+autocmd FileType html,erb,jst,handlebars source ~/.vim/plugin/closetag.vim 
+
+
 " When editing a file, always jump to the last known cursor position.
+"
 " Don't do it when the position is invalid or when inside an event handler
 " (happens when dropping a file on gvim).
 autocmd BufReadPost *
