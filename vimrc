@@ -1,7 +1,7 @@
 " My custom vim config file 
 "
 " Maintainer:   phreax 	
-" Last change:  2011, 09.03.	
+" Last change:  2013, 20.02.	
 "
 " To use it, copy it to
 "     for Unix and OS/2:  ~/.vimrc
@@ -329,6 +329,7 @@ autocmd FileType javascript nmap <leader>j :JSHint<cr>
 augroup vimrcEx
 au!
 
+
 " For all text files set 'textwidth' to 78 characters.
 autocmd FileType text setlocal textwidth=78
 autocmd FileType tex setlocal textwidth=100
@@ -339,6 +340,10 @@ autocmd FileType pandoc setlocal textwidth=78
 let g:closetag_html_style=1 
 autocmd FileType html,erb,jst,handlebars source ~/.vim/plugin/closetag.vim 
 
+" Powerline settings
+set laststatus=2
+set encoding=utf-8
+let g:Powerline_symbols = 'unicode'
 
 " When editing a file, always jump to the last known cursor position.
 "
