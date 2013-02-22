@@ -160,8 +160,14 @@ nmap <silent> <C-n> <esc>:call ToggleHLSearch()<CR>
 " When vimrc is edited, reload it
 autocmd! bufwritepost .vimrc source ~/.vimrc
 
-" hotkey for command-T
-map <Leader>t :CommandT<CR>
+" CtrlP
+:let g:ctrlp_map = '<Leader>t'
+:let g:ctrlp_match_window_bottom = 1
+:let g:ctrlp_match_window_reversed = 0
+:let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend|sqlite)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
+:let g:ctrlp_working_path_mode = 0
+:let g:ctrlp_dotfiles = 0
+:let g:ctrlp_switch_buffer = 0
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
