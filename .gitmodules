@@ -37,9 +37,6 @@
 [submodule "vim/bundle/coffe-script"]
 	path = vim/bundle/coffe-script
 	url = git://github.com/phreax/vim-coffee-script.git
-[submodule "vim/bundle/command-t"]
-	path = vim/bundle/command-t
-	url = git://github.com/wincent/Command-T.git
 [submodule "vim/bundle/endwise"]
 	path = vim/bundle/endwise
 	url = git://github.com/tpope/vim-endwise.git
