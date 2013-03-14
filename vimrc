@@ -346,6 +346,10 @@ autocmd FileType pandoc setlocal textwidth=78
 let g:closetag_html_style=1 
 autocmd FileType html,erb,jst,handlebars source ~/.vim/plugin/closetag.vim 
 
+" Jedi
+let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#popup_on_dot = 0
+
 " Powerline settings
 set laststatus=2
 set encoding=utf-8
