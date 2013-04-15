@@ -67,3 +67,15 @@
 [submodule "vim/bundle/coffee-script"]
 	path = vim/bundle/coffee-script
 	url = https://github.com/phreax/vim-coffee-script.git
+[submodule "vim/bundle/vim-jst"]
+	path = vim/bundle/vim-jst
+	url = git://github.com/briancollins/vim-jst.git
+[submodule "vim/bundle/jedi"]
+	path = vim/bundle/jedi
+	url = https://github.com/davidhalter/jedi-vim
+[submodule "vim/bundle/syntastic"]
+	path = vim/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic
+[submodule "vim/bundle/multiple-cursor"]
+	path = vim/bundle/multiple-cursor
+	url = https://github.com/terryma/vim-multiple-cursors
