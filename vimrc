@@ -349,6 +349,7 @@ autocmd FileType html,erb,jst,handlebars source ~/.vim/plugin/closetag.vim
 " Jedi
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#popup_on_dot = 0
+let g:jedi#show_function_definition = "0"
 
 " Powerline settings
 set laststatus=2
