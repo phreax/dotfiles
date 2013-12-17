@@ -149,8 +149,12 @@ nmap <silent> <C-n> <esc>:call ToggleHLSearch()<CR>
 " When vimrc is edited, reload it
 autocmd! bufwritepost .vimrc source ~/.vimrc
 
-" hotkey for command-T
-map <Leader>t :CommandT<CR>
+" hotkey for CtrlP
+let g:ctrlp_map = '<leader>t'
+let g:ctrlp_cmd = 'CtrlP'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~,tmp/*,.git/*
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_user_command = 'find %s -type f'
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -287,10 +291,34 @@ let coffee_compile_on_save = 1
 au FileType coffee vmap <Leader>c :CoffeeCompile<CR>
 au FileType coffee set shiftwidth=2
 au FileType coffee set tabstop=2 
+au FileType coffee 
+      \map <Leader>m :silent CoffeeMake! -b <bar> cwindow <bar> redraw!<CR>
 
+
+" Syntastic
+let g:syntastic_python_checkers=['pyflakes']
+if exists("loaded_coffe_syntax_checker")
+  finish
+endif
+let loaded_coffe_syntax_checker = 1
+
+"bail if the user doesnt have coffee-script installed
+if !executable("coffee")
+  finish
+endif
+
+function! SyntaxCheckers_coffee_GetLocList()
+  let errorformat =  '%EError: In %f\, Parse error on line %l: %m,%Z%p^,%W%f:%l: warning: %m'
+
+  return SyntasticMake({ 'makeprg': 'coffee -o /tmp -c %', 'errorformat': errorformat })
+endfunction
+
+" Jedi
+let g:jedi#popup_on_dot = 0
+let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#show_function_definition = "0"
 
 " autocompletion config
-
 setlocal omnifunc=javacomplete#Complete 
 
 setlocal completefunc=javacomplete#CompleteParamsInfo
@@ -326,4 +354,6 @@ autocmd BufReadPost *
   \   exe "normal g`\"" |
   \ endif
 
+" Remove trailing whitespaces on save
+autocmd FileType ruby,python,haml,javascript,coffee,handlebars,yaml,css,scss autocmd BufWritePre <buffer> :%s/\s\+$//e
 
