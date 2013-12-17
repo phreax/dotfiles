@@ -92,6 +92,7 @@ alias ll="ls -l"
 # start tmux in 256 color mode
 alias tmux="tmux -2" 
 
+unsetopt correctall
 
 # User specific environment and startup programs
 PATH=$PATH:$HOME/bin:/usr/bin
@@ -99,6 +100,7 @@ PATH=$PATH:$HOME/bin:/usr/bin
 
 export PATH
 unset USERNAME
+
 
 RUBYLIB=$RUBYLIB:.
 
