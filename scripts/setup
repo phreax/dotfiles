@@ -3,10 +3,10 @@
 # setup dotfiles
 
 PWD=`pwd`
-files='vim tmux.conf vimrc dotfiles gitconfig'
+files='vim tmux.conf vimrc zshrc gitconfig oh-my-zsh'
 for file in $files;
 do
-   echo ln -s $PWD/$arg $HOME/.$file  
-   ln -s $PWD/$arg $HOME/.$file  
+   echo ln -s $PWD/$file $HOME/.$file  
+   ln -s $PWD/$file $HOME/.$file  
 done
 
