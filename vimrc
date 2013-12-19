@@ -27,6 +27,7 @@ set backupdir=~/.vimbackups
 let mapleader = ","
 let g:mapleader = ","
 
+cmap w!! w !sudo tee > /dev/null %
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -357,3 +358,4 @@ autocmd BufReadPost *
 " Remove trailing whitespaces on save
 autocmd FileType ruby,python,haml,javascript,coffee,handlebars,yaml,css,scss autocmd BufWritePre <buffer> :%s/\s\+$//e
 
+" Allow saving of files as sudo when I forgot to start vim using sudo.

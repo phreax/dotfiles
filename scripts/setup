@@ -2,12 +2,11 @@
 
 # setup dotfiles
 
-
 PWD=`pwd`
-
-for arg in $@;
+files='vim tmux.conf vimrc dotfiles gitconfig'
+for file in $files;
 do
-   echo ln -s $PWD/$arg $HOME/.$arg  
-   ln -s $PWD/$arg $HOME/.$arg  
+   echo ln -s $PWD/$arg $HOME/.$file  
+   ln -s $PWD/$arg $HOME/.$file  
 done
 
