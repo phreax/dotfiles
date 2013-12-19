@@ -3,7 +3,7 @@
 # setup dotfiles
 
 PWD=`pwd`
-files='vim tmux.conf vimrc zshrc gitconfig oh-my-zsh'
+files='dircolors vim tmux.conf vimrc zshrc gitconfig oh-my-zsh'
 for file in $files;
 do
    echo ln -s $PWD/$file $HOME/.$file  
