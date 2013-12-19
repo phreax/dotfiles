@@ -1,0 +1,9 @@
+[color]
+        diff = auto
+        status = auto
+        branch = auto
+[core]
+        editor = vim
+[push]
+       default = current
+
