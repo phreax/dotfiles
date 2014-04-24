@@ -164,7 +164,7 @@ autocmd! bufwritepost .vimrc source ~/.vimrc
 :let g:ctrlp_map = '<Leader>t'
 :let g:ctrlp_match_window_bottom = 1
 :let g:ctrlp_match_window_reversed = 0
-:let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend|sqlite)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
+:let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend|sqlite|aux|log|toc)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
 :let g:ctrlp_working_path_mode = 0
 :let g:ctrlp_dotfiles = 0
 :let g:ctrlp_switch_buffer = 0
@@ -341,6 +341,7 @@ autocmd FileType text setlocal textwidth=78
 autocmd FileType tex setlocal textwidth=100
 autocmd FileType markdown setlocal textwidth=78
 autocmd FileType pandoc setlocal textwidth=78
+autocmd FileType tex setlocal textwidth=78
 
 " Tagclose for all html-like files
 let g:closetag_html_style=1 
