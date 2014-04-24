@@ -46,9 +46,6 @@
 [submodule "vim/bundle/sparkup"]
 	path = vim/bundle/sparkup
 	url = git://github.com/rstacruz/sparkup.git
-[submodule "vim/bundle/vim-jst"]
-	path = vim/bundle/vim-jst
-	url = git://github.com/jeyb/vim-jst.git
 [submodule "vim/bundle/syntastic"]
 	path = vim/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic
@@ -70,9 +67,6 @@
 [submodule "vim/bundle/jedi"]
 	path = vim/bundle/jedi
 	url = https://github.com/davidhalter/jedi-vim
-[submodule "vim/bundle/syntastic"]
-	path = vim/bundle/syntastic
-	url = https://github.com/scrooloose/syntastic
 [submodule "vim/bundle/multiple-cursor"]
 	path = vim/bundle/multiple-cursor
 	url = https://github.com/terryma/vim-multiple-cursors
