@@ -155,7 +155,7 @@ else
 endif
 endfunction
 
-nmap <silent> <C-n> <esc>:call ToggleHLSearch()<CR>
+" nmap <silent> <C-n> <esc>:call ToggleHLSearch()<CR>
 
 " When vimrc is edited, reload it
 autocmd! bufwritepost .vimrc source ~/.vimrc
@@ -395,3 +395,39 @@ autocmd BufReadPost *
 " Remove trailing whitespaces on save
 autocmd FileType ruby,python,haml,javascript,coffee,handlebars,yaml,css,scss autocmd BufWritePre <buffer> :%s/\s\+$//e
 
+" Multi cursor
+" let g:multi_cursor_quit_key='<C-c>'
+"
+
+
+"
+" Vundle 
+"
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+" Bundle 'pangloss/vim-javascript'
+Bundle 'mxw/vim-jsx'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
