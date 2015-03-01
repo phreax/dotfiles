@@ -19,4 +19,4 @@ nmap <leader>g :ToggleShader<cr>
 " send shader source
 au BufWritePost *.frag :SendFragShader
 au BufWritePost *.vert :SendVertShader
-
+" 

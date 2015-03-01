@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/pyth0n/projects/theflyingyourtes_old/_posts'
+let g:netrw_dirhist_2='/home/pyth0n/projects/theflyingyourtes_old/images'
+let g:netrw_dirhist_3='/home/pyth0n/projects/livegl/examples'
+let g:netrw_dirhist_4='/home/pyth0n/Studium/WS11/praktikum/kapitel'
+let g:netrw_dirhist_5='/home/pyth0n/projects/livegl/vim'

@@ -4,7 +4,7 @@ set -e
 
 USER=pyth0n
 export HOME=/home/$USER
-if [ ! $DISPLAY ]; then
+if [! $DISPLAY ]; then
     export DISPLAY=:0
 fi
 
@@ -19,7 +19,7 @@ STATE=$(cat /sys/bus/platform/devices/dock.0/docked)
 if [ $STATE = '1' ]; then
     echo "add docking"
     $DISPER -e -r auto    
-    echo "$DISPER -e -r auto"
+    echo "$DISPER -e -r auto -t left"
 fi
 
 # remove docking station

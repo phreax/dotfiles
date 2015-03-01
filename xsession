@@ -14,4 +14,6 @@ echo export XAUTHORITY >> .Xenv
 export TERM=xterm-256color
 echo xrdb -load $HOME/.Xresources
 xrdb -load $HOME/.Xresources
-     
+gnome-settings-daemon &     
+gnome-power-manager &     
+nm-applet &
