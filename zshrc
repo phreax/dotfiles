@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="blinks"
+ZSH_THEME="avit"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -24,20 +24,45 @@ ZSH_THEME="blinks"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git rvm rails)
+plugins=(git rvm rails wd python docker tmuxinator)
 
-# dont rename window in screen/tmux session
-    
+source $ZSH/oh-my-zsh.sh
+
+# activate vi mode 
+bindkey -v
+
+# bind common shortcuts in vi mode
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+bindkey '^w' backward-kill-word
+bindkey '^r' history-incremental-search-backward
+
+# display vi normal mode in prompt
+precmd() {
+  RPROMPT=""
+}
+
+zle-keymap-select() {
+  RPROMPT=""
+    [[ $KEYMAP = vicmd  ]] && RPROMPT="(CMD)"
+      () { return $__prompt_status  }
+        zle reset-prompt
+
+}
+zle-line-init() {
+  typeset -g __prompt_status="$?"
+}
+zle -N zle-keymap-select
+zle -N zle-line-init
+export KEYTIMEOUT=1
+
 if [[ "$TERM" == screen* ]]; then
     # set title once
     DISABLE_AUTO_TITLE=true
     unset DBUS_SESSION_BUS_ADDRESS
-else
-    export TERM=xterm-256color
 fi
-
-# set current dir for tmux
-#$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#I") $PWD)
 
 alias vi=vim
 
@@ -45,27 +70,8 @@ vim () {
     (unset GEM_PATH GEM_HOME; command vim "$@")
 }
 
-# Module: Change directory with bookmarks
-# path: bin/zsh-modules-available/cdbookmarks
-function cedit() {
-  vim ~/.cdbookmarks
-}
-
-function c() {
-  NewDir=`egrep "^$1\s." ~/.cdbookmarks \
-     | awk '{print $2}'`
-  echo cd $NewDir
-  cd $NewDir
-  unset $NewDir
-}
-
-function _c() {
-  reply=(`cat ~/.cdbookmarks | awk '{print $1}'`);
-}
-
 compctl -K _c c
 
-source $ZSH/oh-my-zsh.sh
 export PYTHONSTARTUP=~/.pythonrc
 
 # switch keyboard mapping
@@ -83,21 +89,32 @@ alias ruby="ruby -I ."
 alias rm="rm -i"
 
 # solarized theme for dir colors
-eval "`dircolors ~/.dircolors`"
+eval "`gdircolors ~/.dircolors`"
 
+alias ls='ls --color=auto'
 alias l="ls"
 alias la="ls -a"
 alias ll="ls -l"
 
 # start tmux in 256 color mode
-alias tmux="tmux -2" 
+alias tmux="tmux" 
+
 
 unsetopt correctall
 
 # User specific environment and startup programs
-PATH=$PATH:$HOME/bin:/usr/bin
+PATH=$PATH:$HOME/bin
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 
+# z
+source `brew --prefix`/etc/profile.d/z.sh
+
+# python path
+# export PYTHONPATH="/Users/micha/dev/objectdetection"
+export PYTHONPATH="."
+
+PATH=$HOME/anaconda2/bin:$PATH
 export PATH
 unset USERNAME
 
@@ -107,3 +124,70 @@ RUBYLIB=$RUBYLIB:.
 # load local rvm config
 __rvm_project_rvmrc
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+source ~/.aws_credentials
+source ~/.api_keys
+
+export LC_ALL=en_US.UTF-8
+
+# pip install and add to requirements
+# thanks to http://stackoverflow.com/questions/20006000/install-a-package-and-write-to-requirements-txt-with-pip
+pip_install_save() {
+    source .venv/bin/activate
+    package_name=$1
+    shift
+    requirements_file='./requirements.txt'
+    pip install $package_name "$@" && pip freeze | grep -i "^$package_name==" >> $requirements_file
+}
+
+# Uage: update-ec2-host <instance name, e.g. gpu1>
+#
+# will result in defining the host as ec2-gpu1
+update-ec2-host() {
+   instance_name=$1 
+   hostname="ec2-$instance_name"
+   public_ip=`aws ec2 describe-instances --filters "Name=tag:Name,Values=$instance_name" | jq ".Reservations[0].Instances[0].PublicIpAddress" | sed -e 's/"//g'`
+
+   if [ -n $public_ip ]
+   then
+       old_ip=`cat /etc/hosts |grep $hostname | cut -d' ' -f1`
+       if [ -z $old_ip ]
+       then 
+           echo "No entry found for '$hostname' in /etc/hosts, creating new entry."
+           sudo sh -c "echo '$public_ip $hostname' >> /etc/hosts "
+
+           echo "Creating entry in ~/.ssh/config"
+           cat <<- EOF >> ~/.ssh/config 
+Host $hostname 
+    User ubuntu
+    IdentityFile ~/.ssh/aws/aws_terraloupe_frankfurt.pem
+EOF
+
+           return 0
+       fi
+       echo "$old_ip -> $public_ip"
+       cat /etc/hosts |sed -e "s/^\(.*\) $hostname$/$public_ip $hostname/g" > /tmp/hosts
+       sudo mv /tmp/hosts /etc/hosts
+   else
+       echo "No instance found for '$instance_name'"
+       return -1
+   fi
+}
+
+# Usage: awslogs <group> <stream> [<time ago in minutes>]
+awslogs() {
+    if [ -n "$3" ]
+    then
+        to=$(date +%s%3N)
+        let "from=$to - $3 * 1000"
+        timerange="--start-time $from --end-time $to"
+    else
+        timerange=""
+    fi
+    cmd="aws logs filter-log-events --log-group-name $1 --log-stream-names $2 $timerange"
+    eval $cmd |jq ".events[].message"
+
+
+}
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
