@@ -6,19 +6,19 @@
 	url = http://github.com/phreax/vim-pandoc.git
 [submodule "vim/bundle/handlebars"]
 	path = vim/bundle/handlebars
-	url = git://github.com/nono/vim-handlebars.git
+	url = https://github.com/nono/vim-handlebars.git
 [submodule "vim/bundle/rails"]
 	path = vim/bundle/rails
-	url = git://github.com/tpope/vim-rails.git
+	url = https://github.com/tpope/vim-rails.git
 [submodule "vim/bundle/tabular"]
 	path = vim/bundle/tabular
 	url = http://github.com/godlygeek/tabular.git
 [submodule "vim/bundle/lusty"]
 	path = vim/bundle/lusty
-	url = git://github.com/sjbach/lusty.git
+	url = https://github.com/sjbach/lusty.git
 [submodule "vim/bundle/jshint"]
 	path = vim/bundle/jshint
-	url = git://github.com/walm/jshint.vim.git
+	url = https://github.com/walm/jshint.vim.git
 [submodule "vim/bundle/tlib"]
 	path = vim/bundle/tlib
 	url = https://github.com/tomtom/tlib_vim.git
@@ -27,22 +27,22 @@
 	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
 [submodule "vim/bundle/webapi"]
 	path = vim/bundle/webapi
-	url = git://github.com/mattn/webapi-vim.git
+	url = https://github.com/mattn/webapi-vim.git
 [submodule "vim/bundle/gist"]
 	path = vim/bundle/gist
-	url = git://github.com/mattn/gist-vim.git
+	url = https://github.com/mattn/gist-vim.git
 [submodule "vim/bundle/coffe-script"]
 	path = vim/bundle/coffe-script
-	url = git://github.com/phreax/vim-coffee-script.git
+	url = https://github.com/phreax/vim-coffee-script.git
 [submodule "vim/bundle/endwise"]
 	path = vim/bundle/endwise
-	url = git://github.com/tpope/vim-endwise.git
-[submodule "vim/bundle/tcomment"]
-	path = vim/bundle/tcomment
-	url = git://github.com/vim-scripts/tComment.git
+	url = https://github.com/tpope/vim-endwise.git
 [submodule "vim/bundle/sparkup"]
 	path = vim/bundle/sparkup
-	url = git://github.com/rstacruz/sparkup.git
+	url = https://github.com/rstacruz/sparkup.git
+[submodule "vim/bundle/tcomment"]
+	path = vim/bundle/tcomment
+	url = https://github.com/vim-scripts/tComment.git
 [submodule "vim/bundle/syntastic"]
 	path = vim/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic
@@ -51,7 +51,7 @@
 	url = https://github.com/Lokaltog/vim-powerline
 [submodule "vim/bundle/ctrlp"]
 	path = vim/bundle/ctrlp
-	url = https://github.com/kien/ctrlp.git
+	url = https://github.com/kien/ctrlp.vim.git
 [submodule "vim/bundle/haml"]
 	path = vim/bundle/haml
 	url = https://github.com/tpope/vim-haml.git
@@ -60,7 +60,7 @@
 	url = https://github.com/phreax/vim-coffee-script.git
 [submodule "vim/bundle/vim-jst"]
 	path = vim/bundle/vim-jst
-	url = git://github.com/briancollins/vim-jst.git
+	url = https://github.com/briancollins/vim-jst.git
 [submodule "vim/bundle/jedi"]
 	path = vim/bundle/jedi
 	url = https://github.com/davidhalter/jedi-vim
@@ -69,16 +69,25 @@
 	url = https://github.com/terryma/vim-multiple-cursors
 [submodule "vim/bundle/auto-pairs"]
 	path = vim/bundle/auto-pairs
-	url = git://github.com/jiangmiao/auto-pairs.git
+	url = https://github.com/jiangmiao/auto-pairs.git
 [submodule "vim/bundle/fireplace"]
 	path = vim/bundle/fireplace
-	url = git://github.com/tpope/vim-fireplace.git
+	url = https://github.com/tpope/vim-fireplace.git
 [submodule "vim/bundle/classpath"]
 	path = vim/bundle/classpath
-	url = git://github.com/tpope/vim-classpath.git
+	url = https://github.com/tpope/vim-classpath.git
 [submodule "vim/bundle/clojure-static"]
 	path = vim/bundle/clojure-static
-	url = git://github.com/guns/vim-clojure-static.git
+	url = https://github.com/guns/vim-clojure-static.git
 [submodule "vim/bundle/snipmate"]
 	path = vim/bundle/snipmate
 	url = https://github.com/garbas/vim-snipmate.git
+[submodule "vim/bundle/Vundle.vim"]
+	path = vim/bundle/Vundle.vim
+	url = https://github.com/VundleVim/Vundle.vim.git
+[submodule "vim/bundle/bundle/vim-yapf"]
+	path = vim/bundle/bundle/vim-yapf
+	url = https://github.com/mindriot101/vim-yapf.git
+[submodule "vim/bundle/vim-yapf"]
+	path = vim/bundle/vim-yapf
+	url = https://github.com/mindriot101/vim-yapf.git
