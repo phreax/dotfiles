@@ -42,20 +42,8 @@ nmap <C-k> <C-W>k
 nmap <C-h> <C-W>h
 nmap <C-l> <C-W>l
 
-" navigation between buffers
-map h :bp!<CR>
-map l :bn!<CR>
-
-map <Left> :bp!<CR>
-map <Right> :bn!<CR>
-
-map <Left> :bp!<CR>
-map <Right> :bn!<CR>
-map <M-right> :bn!<CR>
-map <M-left> :bp!<CR>
-map <M-k> :bp!<CR>
-map <M-l> :bn!<CR>
-map <M-h> :bp!<CR>
+map  :bp!<CR>
+map  :bn!<CR>
 
 """"""""""""""""""""""""""""""
 " => bufExplorer plugin
@@ -204,7 +192,6 @@ set hlsearch
 set shiftwidth=4
 set expandtab
 set tabstop=4
-set autoindent
 
 " set tagfile
 let &tags = ".tags"
@@ -316,6 +303,10 @@ if exists("loaded_coffe_syntax_checker")
 endif
 let loaded_coffe_syntax_checker = 1
 
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+
+
 "bail if the user doesnt have coffee-script installed
 if !executable("coffee")
   finish
@@ -370,9 +361,6 @@ autocmd FileType tex setlocal textwidth=78
 let g:closetag_html_style=1 
 autocmd FileType html,erb,jst,handlebars source ~/.vim/plugin/closetag.vim 
 
-" Syntastic
-let g:syntastic_python_checkers=['pyflakes']
-
 " Jedi
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#popup_on_dot = 0
@@ -416,10 +404,11 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 " Bundle 'pangloss/vim-javascript'
 Bundle 'mxw/vim-jsx'
+Bundle 'chase/vim-ansible-yaml'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
-filetype plugin indent on    " required
+filetype plugin on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
