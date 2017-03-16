@@ -1,7 +1,6 @@
 " My custom vim config file 
 "
 " Maintainer:   phreax 	
-" Last change:  2013, 20.02.	
 "
 " To use it, copy it to
 "     for Unix and OS/2:  ~/.vimrc
@@ -12,8 +11,8 @@ finish
 endif
 
 " init pathogen
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+" call pathogen#runtime_append_all_bundles()
+" call pathogen#helptags()
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -44,6 +43,9 @@ nmap <C-l> <C-W>l
 
 map  :bp!<CR>
 map  :bn!<CR>
+
+" Create new file in the current directory
+nmap <leader>f :e <C-R>=expand('%:h')<CR>/
 
 """"""""""""""""""""""""""""""
 " => bufExplorer plugin
@@ -116,7 +118,34 @@ vnoremap ; :
 " clear highlight searc
 nmap <silent> <leader>/ :nohlsearch<CR>
 
-nmap ,n :call ReloadSnippets(snippets_dir, &filetype)<CR>
+" Neosnippet
+
+let g:neosnippet#enable_snipmate_compatibility = 1
+let g:neosnippet#disable_runtime_snippets = {
+        \   '_' : 1,
+        \}
+let g:neosnippet#snippets_directory='~/.vim/snippets'
+
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+
+imap <expr><TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ neosnippet#expandable_or_jumpable() ?
+      \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+      \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" Edit Snippets
+nmap <leader>n :NeoSnippetEdit<CR>
+
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -131,30 +160,44 @@ nmap <leader>q :q<cr>
 nmap <leader>e :e! ~/.vimrc<cr>
 nmap P +A
 
-" remap left, right
-
 
 " toggle search highlighting 
 function! ToggleHLSearch()
 if &hls
     set nohls
 else
-    set hls
+   set hls
 endif
 endfunction
 
 " nmap <silent> <C-n> <esc>:call ToggleHLSearch()<CR>
+"
+function! ToggleRelativeNumbers()
+if &rnu
+    set number
+    set nornu
+else
+    set nonumber
+    set rnu
+endif
+endfunction
+
+
+set nonumber
+set rnu
+nmap <leader>r :call ToggleRelativeNumbers()<CR>
 
 " When vimrc is edited, reload it
 autocmd! bufwritepost .vimrc source ~/.vimrc
 
-:let g:ctrlp_map = '<Leader>t'
-:let g:ctrlp_match_window_bottom = 1
-:let g:ctrlp_match_window_reversed = 0
-:let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend|sqlite|aux|log|toc)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
-:let g:ctrlp_working_path_mode = 0
-:let g:ctrlp_dotfiles = 0
-:let g:ctrlp_switch_buffer = 0
+let g:ctrlp_map = '<Leader>t'
+let g:ctrlp_match_window_bottom = 1
+let g:ctrlp_match_window_reversed = 0
+let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend|sqlite|aux|log|toc)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py|DS_Store|node_modules'
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_dotfiles = 0
+let g:ctrlp_switch_buffer = 0
+
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -169,7 +212,6 @@ set ruler		    " show the cursor position all the time
 set showcmd		    " display incomplete commands
 set incsearch		" do incremental searching
 set wildmenu        " better cmd tab menu
-set number
 
 " When pressing <leader>cd switch to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>
@@ -185,6 +227,7 @@ map Q gq
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
+let python_highlight_all=1
 syntax on
 set hlsearch
 
@@ -267,26 +310,26 @@ nmap <F12> :call ToggleNumbers()<CR>
 " => JavaScript section
 """""""""""""""""""""""""""""""
 " au FileType javascript call JavaScriptFold()
-au FileType javascript setl fen
-au FileType javascript setl nocindent
-au FileType javascript set shiftwidth=2
-au FileType javascript set tabstop=2 
-
-au FileType javascript imap <c-t> AJS.log();<esc>hi
-au FileType javascript imap <c-a> alert();<esc>hi
-au FileType javascript inoremap <buffer> $f //--- PH ----------------------------------------------<esc>FP2xi
-
-function! JavaScriptFold()
-setl foldmethod=syntax
-setl foldlevelstart=1
-syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
-
-function! FoldText()
-return substitute(getline(v:foldstart), '{.*', '{...}', '')
-endfunction
-setl foldtext=FoldText()
-endfunction
-
+" au FileType javascript setl fen
+" au FileType javascript setl nocindent
+" au FileType javascript set shiftwidth=2
+" au FileType javascript set tabstop=2 
+"
+" au FileType javascript imap <c-t> AJS.log();<esc>hi
+" au FileType javascript imap <c-a> alert();<esc>hi
+" au FileType javascript inoremap <buffer> $f //--- PH ----------------------------------------------<esc>FP2xi
+"
+" function! JavaScriptFold()
+" setl foldmethod=syntax
+" setl foldlevelstart=1
+" syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
+"
+" function! FoldText()
+" return substitute(getline(v:foldstart), '{.*', '{...}', '')
+" endfunction
+" setl foldtext=FoldText()
+" endfunction
+"
 " CoffeScript
 let coffee_compile_on_save = 1
 au FileType coffee vmap <Leader>c :CoffeeCompile<CR>
@@ -297,43 +340,106 @@ au FileType coffee
 
 
 " Syntastic
-let g:syntastic_python_checkers=['pyflakes']
-if exists("loaded_coffe_syntax_checker")
-  finish
-endif
-let loaded_coffe_syntax_checker = 1
+" let g:syntastic_python_checkers=['pyflakes']
+" if exists("loaded_coffe_syntax_checker")
+"   finish
+" endif
+" let loaded_coffe_syntax_checker = 1
+"
+" let g:syntastic_cpp_compiler = 'clang++'
+" let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+"
+"
 
-let g:syntastic_cpp_compiler = 'clang++'
-let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
-
+" closetag
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.erb,*.jsx,*.js'
 
 "bail if the user doesnt have coffee-script installed
 if !executable("coffee")
   finish
 endif
 
-function! SyntaxCheckers_coffee_GetLocList()
-  let errorformat =  '%EError: In %f\, Parse error on line %l: %m,%Z%p^,%W%f:%l: warning: %m'
+" Switched syntax checker to ale
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
-  return SyntasticMake({ 'makeprg': 'coffee -o /tmp -c %', 'errorformat': errorformat })
-endfunction
+" function! SyntaxCheckers_coffee_GetLocList()
+"   let errorformat =  '%EError: In %f\, Parse error on line %l: %m,%Z%p^,%W%f:%l: warning: %m'
+"
+"   return SyntasticMake({ 'makeprg': 'coffee -o /tmp -c %', 'errorformat': errorformat })
+" endfunction
+
+" Ale
+set nocompatible
+filetype off
+
+let &runtimepath.=',~/.vim/bundle/ale'
+let g:ale_linters = {
+            \   'python': ['flake8'],
+            \   'jsx': ['eslint']
+            \}
+let g:ale_python_flake8_args = "--ignore=E501"
+
+let g:ale_linter_aliases = {'jsx': 'css'}
+
+filetype plugin on
 
 " Jedi
 let g:jedi#popup_on_dot = 0
 let g:jedi#use_tabs_not_buffers = 0
-let g:jedi#show_function_definition = "0"
+let g:jedi#show_function_signatures = "0"
+
+
+" Do not show `User defined completion (^U^N^P) Pattern not found`
+set shortmess+=c
+
+" YouCompleteMe
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_auto_trigger = 1
+
+" Neocomplete
+let g:acp_enableAtStartup = 0
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 2
+" Bind tab for completion
+let g:neocomplete#enable_auto_close_preview=1
+" let g:neocomplete#force_omni_input_patterns = {
+"     \ 'javascript': '[^. \t]\.\w*'
+"     \}
+let g:neocomplete#fallback_mappings =
+        \ ["\<C-x>\<C-o>", "\<C-x>\<C-n>"]
+
+autocmd FileType javascript setlocal omnifunc=tern#Complete
+
+" buftabline
+let g:buftabline_show = 1 " only show when at least 2 buffers are open
+let g:buftabline_numbers = 2
+let g:buftabline_indicators = 1
+nmap <leader>1 <Plug>BufTabLine.Go(1)
+nmap <leader>2 <Plug>BufTabLine.Go(2)
+nmap <leader>3 <Plug>BufTabLine.Go(3)
+nmap <leader>4 <Plug>BufTabLine.Go(4)
+nmap <leader>5 <Plug>BufTabLine.Go(5)
+nmap <leader>6 <Plug>BufTabLine.Go(6)
+nmap <leader>7 <Plug>BufTabLine.Go(7)
+nmap <leader>8 <Plug>BufTabLine.Go(8)
+nmap <leader>9 <Plug>BufTabLine.Go(9)
+nmap <leader>0 <Plug>BufTabLine.Go(10)
+
 
 " autocompletion config
-setlocal omnifunc=javacomplete#Complete 
+" setlocal omnifunc=javacomplete#Complete 
 
-setlocal completefunc=javacomplete#CompleteParamsInfo
+" setlocal completefunc=javacomplete#CompleteParamsInfo
 inoremap <buffer> <C-X><C-U> <C-X><C-U><C-P>
 " inoremap <buffer> <C-S-Space> <C-X><C-U><C-P>
 
 " set cursorline highlighting (for gui only)
 set cursorline 
 
-autocmd Filetype java setlocal omnifunc=javacomplete#Complete
+" autocmd Filetype java setlocal omnifunc=javacomplete#Complete
 
 " Enable file type detection.
 " Use the default filetype settings, so that mail gets 'tw' set to 72,
@@ -342,9 +448,6 @@ autocmd Filetype java setlocal omnifunc=javacomplete#Complete
 filetype plugin indent on
 filetype plugin on
 
-" JSHint options 
-autocmd FileType javascript nmap <leader>j :JSHint<cr>
-
 " Put these in an autocmd group, so that we can delete them easily.
 augroup vimrcEx
 au!
@@ -352,20 +455,27 @@ au!
 
 " For all text files set 'textwidth' to 78 characters.
 autocmd FileType text setlocal textwidth=78
-autocmd FileType tex setlocal textwidth=100
 autocmd FileType markdown setlocal textwidth=78
 autocmd FileType pandoc setlocal textwidth=78
 autocmd FileType tex setlocal textwidth=78
 
+" Always want spellcheck for text files.
+set spelllang=en_us
+autocmd BufNewFile,BufRead *.txt,*.md,*.markdown setlocal spell
+autocmd FileType gitcommit setlocal spell 
+
+let g:markdown_fenced_languages = ['python', 'ruby', 'json', 'javascript']
+let g:gfm_syntax_emoji_conceal = 1
+
+
+" Custom file types
+
+" autocmd FileType python setlocal textwidth=78
+
 " Tagclose for all html-like files
-let g:closetag_html_style=1 
-autocmd FileType html,erb,jst,handlebars source ~/.vim/plugin/closetag.vim 
-
-" Jedi
-let g:jedi#use_tabs_not_buffers = 0
-let g:jedi#popup_on_dot = 0
-let g:jedi#show_function_definition = "0"
-
+" let g:closetag_html_style=1 
+" autocmd FileType html,erb,jst,handlebars source ~/.vim/plugin/closetag.vim 
+"
 " Powerline settings
 set laststatus=2
 set encoding=utf-8
@@ -424,3 +534,7 @@ filetype plugin on    " required
 " fix slow syntax hightlighting
 set ttyfast
 set lazyredraw
+execute pathogen#infect()
+
+" update pathogen helptags
+Helptags

@@ -3,6 +3,8 @@ snippet #!
 
 snippet imp
 	import ${1:module}
+snippet fr
+	from ${1:module} import ${2} 
 # Module Docstring
 snippet docs
 	'''
@@ -10,6 +12,14 @@ snippet docs
 	Author: ${2:`g:snips_author`}
 	Description: ${3}
 	'''
+
+snippet ip
+	import ipdb; ipdb.set_trace()
+
+snippet ipd
+	import ipdb; ipdb.set_trace()
+
+
 snippet wh
 	while ${1:condition}:
 		${2:# code...}
@@ -18,6 +28,12 @@ snippet for
 		${3:# code...}
 # New Class
 snippet cl
+	class ${1:ClassName}(${2}):
+		"""${3:docstring for $1}"""
+		def __init__(self, ${4:arg}):
+			self.$4 = $4
+			${5}
+snippet cls
 	class ${1:ClassName}(${2:object}):
 		"""${3:docstring for $1}"""
 		def __init__(self, ${4:arg}):

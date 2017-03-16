@@ -1,5 +1,26 @@
 snippet req
 	require('${1}')${2}
+
+# ES6 / React
+snippet imp
+  import ${1} from '${2}';
+
+snippet impr 
+  import React from 'react';
+
+snippet impc 
+  import ${1:Component} from './$1';${0}
+
+snippet comp
+  export default class ${1:Component} extends React.Component {
+    render() {
+      return (
+        ${2:#:jsx}
+      );
+    }
+  }
+
+
 # Backbone/Ember
 snippet g
 	this.get('${1}')${2};
@@ -25,11 +46,17 @@ snippet l
 	console.log(${1});
 # if
 snippet if
-	if (${1:true}) {${2}};
+	if(${1:true}) {
+    ${2}
+  };
 # if ... else
 snippet ife
-	if (${1:true}) {${2}}
-	else{${3}};
+	if(${1:true}) {
+    ${2}
+  }
+	else {
+    ${3}
+  };
 # tertiary conditional
 snippet t
 	${1:/* condition */} ? ${2:a} : ${3:b}
